@@ -9,18 +9,25 @@
 $(document).ready(function() {
 
   var playerName = '';
+  var playerAnswer1 = '';
+  var answer1 = 'Snow White'
 
   // Hide Player Name
   $('#show-player-name').hide();
+  $('.question').hide();
 
   // Allow user to type name immediately on page load
   $('#player-name').focus();
 
-  // When user submits name, welcome screen disappears
+    // When user submits name, welcome screen disappears
   function removeWelcomeScreen() {
     $('#welcome-screen').detach();
-    $('#show-player-name').show().addClass('animated fadeIn');
+    $('#show-player-name').show().addClass('animated zoomIn');
   };
+
+  function removedquestion() {
+  	$('#question1').show().addClass('animated zoomInLeft');
+  }
 
   // Store player name
   $('#name-button').on('click', function(e) {
@@ -28,8 +35,23 @@ $(document).ready(function() {
     playerName = $('#player-name').val();
     console.log(playerName);
     $('#show-player-name').text(playerName);
-     $('#welcome-screen').addClass('animated fadeOut');
+    $('#welcome-screen').addClass('animated zoomOut');
     setTimeout(removeWelcomeScreen, 1000);
+    setTimeout(removedquestion, 2000);
   });
 
-}) // ready function ends
+  // Store answer 1
+  $('#question1-btn').on('click', function(e) {
+    e.preventDefault(); // prevents form from submitting to a database
+    playerAnswer1 = $('#input-question1').val().trim();
+    console.log(playerAnswer1);
+    showPlayerAnswer1();
+  });
+
+  // Show answers
+  function showPlayerAnswer1() {
+    $('#show-player-answer1').text(playerAnswer1);
+    $('#correct-answer1').text(answer1);
+  };
+
+}); // ready function ends
