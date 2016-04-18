@@ -10,7 +10,7 @@ $(document).ready(function() {
 
   var playerName = '';
   var playerAnswer1 = '';
-  var answer1 = 'Snow White'
+  var answer1 = 'Number four, Privet Drive'
 
   // Hide Player Name
   $('#show-player-name').hide();
